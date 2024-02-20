@@ -2,11 +2,11 @@
 
 [![Crates.io](https://img.shields.io/crates/v/ttyper)](https://crates.io/crates/ttyper)
 [![GitHub Stars](https://img.shields.io/github/stars/max-niederman/ttyper)](https://github.com/max-niederman/ttyper)
-[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/max-niederman/ttyper/Rust)](https://github.com/max-niederman/ttyper/actions)
-[![GitHub issues](https://img.shields.io/github/issues/max-niederman/ttyper)](https://github.com/max-niederman/ttyper/issues)
+[![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/max-niederman/ttyper/rust.yml)](https://github.com/max-niederman/ttyper/actions)
+[![GitHub issues](https://img.shields.io/github/issues/max-niederman/ttyper)](https://github.com/max-niederman/ttype/github/actions/workflow/status/:user/:repo/:workflow+r/issues)
 [![License](https://img.shields.io/crates/l/ttyper)](./LICENSE.md)
 
-Ttyper is a terminal-based typing test built with Rust and tui-rs.
+ttyper is a terminal-based typing test built with Rust and tui-rs.
 
 ![Recording](./resources/recording.gif)
 
@@ -22,12 +22,18 @@ Pre-built binaries are available for most architectures on [GitHub releases](htt
 cargo install ttyper
 ```
 
+### scoop
+
+```bash
+scoop install ttyper
+```
+
 ## usage
 
 For usage instructions, you can run `ttyper --help`:
 
 ```
-ttyper 1.0.0
+ttyper 1.4.0
 Terminal-based typing test.
 
 USAGE:
@@ -37,6 +43,7 @@ FLAGS:
     -d, --debug             
     -h, --help              Prints help information
         --list-languages    List installed languages
+        --no-backtrack      Disable backtracking to completed words
     -V, --version           Prints version information
 
 OPTIONS:
@@ -73,6 +80,8 @@ The following languages are available by default:
 | `english-advanced` |              Advanced English words |
 | `english-pirate`   |       50 pirate speak English words |
 | `german`           |        207 most common German words |
+| `german1000`       |       1000 most common German words |
+| `german10000`      |      10000 most common German words |
 | `go`               |         The Go programming language |
 | `html`             |           HyperText Markup Language |
 | `java`             |       The Java programming language |
@@ -85,6 +94,7 @@ The following languages are available by default:
 | `ruby`             |       The Ruby programming language |
 | `rust`             |       The Rust programming language |
 | `spanish`          |       100 most common Spanish words |
+| `ukrainian`        |     100 most common Ukrainian words |
 
 Additional languages can be added by creating a file in `TTYPER_CONFIG_DIR/language` with a word on each line. On Linux, the config directory is `$HOME/.config/ttyper`; on Windows, it's `C:\Users\user\AppData\Roaming\ttyper`; and on macOS it's `$HOME/Library/Application Support/ttyper`.
 
@@ -125,6 +135,9 @@ prompt_current_correct = "green;bold"
 prompt_current_incorrect = "red;bold"
 # untyped letters in current word
 prompt_current_untyped = "blue;bold"
+
+# cursor character
+prompt_cursor = "none;underlined"
 
 ## results styles ##
 

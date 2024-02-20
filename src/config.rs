@@ -1,8 +1,8 @@
+use ratatui::style::{Color, Modifier, Style};
 use serde::{
     de::{self, IntoDeserializer},
     Deserialize,
 };
-use tui::style::{Color, Modifier, Style};
 
 #[derive(Debug, Deserialize)]
 #[serde(default)]
@@ -47,6 +47,9 @@ pub struct Theme {
     pub prompt_current_incorrect: Style,
     #[serde(deserialize_with = "deserialize_style")]
     pub prompt_current_untyped: Style,
+
+    #[serde(deserialize_with = "deserialize_style")]
+    pub prompt_cursor: Style,
 
     // results widget
     #[serde(deserialize_with = "deserialize_style")]
@@ -93,6 +96,8 @@ impl Default for Theme {
             prompt_current_untyped: Style::default()
                 .fg(Color::Blue)
                 .add_modifier(Modifier::BOLD),
+
+            prompt_cursor: Style::default().add_modifier(Modifier::UNDERLINED),
 
             results_overview: Style::default()
                 .fg(Color::Cyan)
